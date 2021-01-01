@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-k8s-demo-deployment
+  labels:
+    app: docker-k8s-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-k8s-deployment
+  template:
+    metadata:
+      labels:
+        app: docker-k8s-deployment
+    spec:
+      containers:
+      - name: docker-k8s-deployment
+        image: wmscdllogistics/dockerjava
+        ports:
+        - containerPort: 8080
